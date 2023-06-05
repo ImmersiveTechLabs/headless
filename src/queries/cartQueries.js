@@ -6,7 +6,6 @@ export const createCartQuery = (productId, quantity) => {
             merchandiseId:"${productId}"
             quantity:${quantity}
           }
-
         ]
       }){
         cart{

@@ -4,7 +4,10 @@ export const singleProductQuery =(handle) =>{
         productByHandle(handle:"${handle}"){
       title
       id
-      variants(first:1){
+      metafield(namespace:"booking" key:"time"){
+        value
+      }
+      variants(first:20){
         edges{
           node{
             id

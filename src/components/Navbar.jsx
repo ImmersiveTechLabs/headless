@@ -13,6 +13,7 @@ const Navbar = () => {
         </div>
         <div className="middle">
         <div className="navbar flex gap-4 text-sm text-[var(--primary-color)] font-nav-font">
+            <Link to="/">Home</Link>
             <Link to="/cart"><span href="#">Cart</span></Link>
             <span href="#">Valentine Collection</span>
             <span href="#">Custom Jewelry</span>

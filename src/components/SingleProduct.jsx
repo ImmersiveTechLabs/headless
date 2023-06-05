@@ -8,11 +8,11 @@ const SingleProduct = () => {
     const [product, setProduct] = useState(null)
     const [productId, setProductId] = useState(null)
     const [enteredDate, setEnteredDate] = useState("")
-    console.log(productId)
     const cartId = localStorage.getItem('cartId')
+    const bookingTime =product&& JSON.parse(product?.metafield.value)
 
     const handleBooking = async()=>{
-        await bookProduct(productId)
+        // await bookProduct(productId)
         console.log('booking added')
         handleAddToCart()
     }
@@ -73,6 +73,12 @@ product &&
                 </div>
                 <div>
                     <div className='mb-[3em]'>
+                    {
+                        bookingTime?.map((time)=>{
+                            return <button className='border-[1px] border-black ml-[20px] mb-[20px] p-2'>{time}</button>
+                        })
+                    }
+
                         <input onChange={(e)=>setEnteredDate(e.target.value)} placeholder='enter date' type="text" />
                         <button onClick={handleCheck}>Check</button>
                     </div>

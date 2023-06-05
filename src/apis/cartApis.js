@@ -40,7 +40,7 @@ export const getCart  = async (cartId)=>{
 }
 export const addItemToCart  = async (cartId,productId,quantity)=>{
     try{
-    const body = {query: addItemToCartQuery(cartId,productId,quantity), variables:{}}
+    const body = {query: addItemToCartQuery(cartId,productId,quantity), variables:{hamza:''}}
          return axios.post(
             process.env.REACT_APP_STOREFRONT_API,
             body,

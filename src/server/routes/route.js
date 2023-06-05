@@ -11,29 +11,10 @@ router.post('/addbooking', async(req,res)=>{
 
 })
 
-
-router.get('/check/:productId/:bookingDate', async(req,res)=>{
-    const {productId, bookingDate} = req.params
-    try{
-        const product = await productModel.find({
-            $and:[
-                {productId},
-                {bookingDate},
-            ]
-
-        })
-        if(!product)return res.status(500).json('not found')
-        res.json(product)
-
-
-    }catch(err){
-        res.status(500).json(err)
-    }
-
-
-
+router.get('/test/:productId',async (req,res)=>{
+    const product = await productModel.find({
+        productId:req.params.productId
+    }).select("-productId -_id -__v")
+    res.send(product)
 })
-
-
-
 module.exports = router

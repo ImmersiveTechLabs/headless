@@ -3,13 +3,14 @@ const mongoose = require('mongoose')
 const productSchema = new mongoose.Schema({
     productId:{
         type:String,
-        required:true
     },
-    bookingDate:{
+    date:{
         type:Date,
-        required:true,
-        index: { expires: '1m' } // Expire using MongoDB TTL index
+    },
+    quantity:{
+        type:Number
     }
+
 })
 productSchema.index({ bookingDate: 1 }, { expireAfterSeconds: 60 });
 
