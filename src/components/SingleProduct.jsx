@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { bookProduct, checkBooking } from '../apis/bookingApi'
 import { addItemToCart, createCart } from '../apis/cartApis'
 import { fetchSingleProduct } from '../apis/productsApi'
 
 const SingleProduct = () => {
     const [product, setProduct] = useState(null)
     const [productId, setProductId] = useState(null)
-    const [enteredDate, setEnteredDate] = useState("")
     const cartId = localStorage.getItem('cartId')
-    const bookingTime =product&& JSON.parse(product?.metafield.value)
 
     const handleBooking = async()=>{
-        // await bookProduct(productId)
-        console.log('booking added')
         handleAddToCart()
     }
-    const handleCheck = async ()=>{
-       const {date} =  await checkBooking(productId, enteredDate)
-}
 
 
 
@@ -69,19 +61,9 @@ product &&
             <div className="w-full md:w-1/2 px-10">
                 <div className="mb-10">
                     <h1 className="font-bold uppercase text-2xl mb-5">{product.title}</h1>
-                    <p className="text-sm">{product.description ? product.description : "No Description" }</p>
+                    <p className="text-sm" dangerouslySetInnerHTML={{__html: product.descriptionHtml}}></p>
                 </div>
                 <div>
-                    <div className='mb-[3em]'>
-                    {
-                        bookingTime?.map((time)=>{
-                            return <button className='border-[1px] border-black ml-[20px] mb-[20px] p-2'>{time}</button>
-                        })
-                    }
-
-                        <input onChange={(e)=>setEnteredDate(e.target.value)} placeholder='enter date' type="text" />
-                        <button onClick={handleCheck}>Check</button>
-                    </div>
                     <div className="inline-block align-bottom mr-5 overflow-hidden">
                         <span className="text-2xl leading-none align-baseline">Rs</span>
                         <span className="font-bold text-5xl leading-none align-baseline">{amount[0]}</span>

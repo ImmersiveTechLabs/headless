@@ -11,13 +11,18 @@ export const singleProductQuery =(handle) =>{
         edges{
           node{
             id
+            price{
+              currencyCode
+              amount
+            }
           }
         }
       }
-      description
+      descriptionHtml
       priceRange{
         minVariantPrice{
             amount
+            currencyCode
         }
       }
       images(first:1){
@@ -38,14 +43,16 @@ export const allProductsQuery = `query products {
             title
             handle
       priceRange {
-        minVariantPrice{
+        maxVariantPrice{
     amount
+    currencyCode
 }
 }
         images(first:1) {
         edges {
           node {
             transformedSrc
+            altText
           }
         }
       }
